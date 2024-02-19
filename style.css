@@ -1,0 +1,103 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    transition: background-color 0.5 ease;
+}
+
+.light-theme {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.dark-theme {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+p {
+    text-align: center;
+}
+
+input {
+    margin-right: 10px;
+}
+
+.conteneur-cartes {
+    margin: auto;
+}
+
+.conteneur-selecteurs-flux {
+    width: 50%;
+    min-height: 75px;
+    align-items: start;
+    text-align: center;
+    margin: auto;
+}
+
+.conteneur-fonctionnalites {
+    display: flex;
+    min-width: 50%;
+    justify-content: space-around;
+    margin: auto;
+    margin-bottom: 50px;
+    align-items: center;
+}
+
+.conteneur-selecteurs-flux[class*="modele-"] {
+    display: grid;
+    grid-template-columns: repeat(var(--nb-colonnes), 1fr);
+    grid-template-rows: repeat(var(--nb-lignes), 1fr);
+}
+
+.conteneur-cartes[class*="modele-"] {
+    display: grid;
+    grid-template-columns: repeat(var(--nb-colonnes), 1fr);
+    grid-template-rows: repeat(var(--nb-lignes), 1fr);
+}
+
+.modele-1 {
+    --nb-colonnes: 1;
+    --nb-lignes: 1;
+}
+
+.modele-2 {
+    --nb-colonnes: 2;
+    --nb-lignes: 1;
+}
+
+.modele-3 {
+    --nb-colonnes: 3;
+    --nb-lignes: 1;
+}
+
+.modele-4 {
+    --nb-colonnes: 2;
+    --nb-lignes: 2;
+}
+
+.modele-5 {
+    --nb-colonnes: 5;
+    --nb-lignes: 1;
+}
+
+.modele-6 {
+    --nb-colonnes: 3;
+    --nb-lignes: 2;
+}
+
+@media (orientation: portrait) {
+    .conteneur-fonctionnalites {
+        display: block;
+    }
+
+    .p-invisible {
+        display: none;
+    }
+
+    input {
+        margin-bottom: 20px;
+    }
+}

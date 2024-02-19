@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/leaflet-image@latest/leaflet-image.js"></script>
+    <title>Glissière</title>
+</head>
+<body>
+    <div id="app">
+        <p>Sélection des flux à afficher</p>
+        <div class="conteneur-selecteurs-flux" :class="'modele-'+nbCartes">
+            <div class="selecteur">
+                <select v-model="listeSelectionFlux[0]" @change="actualiserFluxGauche">
+                    <optgroup v-for="(flux, categorie) in listeFluxCategories" :label="categorie" :key="categorie">
+                        <option v-for="nomFlux in flux" :key="nomFlux" :value="nomFlux">{{ nomFlux }}</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="selecteur">
+                <select v-model="listeSelectionFlux[1]" @change="actualiserFluxDroit">
+                    <optgroup v-for="(flux, categorie) in listeFluxCategories" :label="categorie" :key="categorie">
+                        <option v-for="nomFlux in flux" :key="nomFlux" :value="nomFlux">{{ nomFlux }}</option>
+                    </optgroup>
+                </select>
+            </div>
+        </div>
+
+        <p>Fonctionnalités</p>
+        <div class="conteneur-fonctionnalites">
+            <div>
+                <label for="recherche">Zoom sur : </label>
+                <input name="recherche" type="text" v-model="recherche" placeholder="Ville, adresse,..." @keyup.enter="zoomRecherche">
+                <button @click="zoomRecherche">OK</button>
+            </div>
+            <div>|</div>
+            <a href="index.html"><button>Côte à côte</button></a>
+            <div>|</div>
+            <button onclick="basculerTheme()">Mode sombre/clair</button>
+        </div>
+
+        <div class="conteneur-cartes">
+            <div id="carte0" :style="{ height: hauteurCarte + 'px' }"></div>
+        </div>
+
+    </div>
+    <script src="js/basculerTheme.js"></script>
+    <script src="js/leaflet-control-swipe/leaflet-control-swipe.js"></script>
+    <script src="js/Leaflet.Sync/L.Map.Sync.js"></script>
+    <script src="js/scriptGlissiere.js"></script>
+</body>
+</html>

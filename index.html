@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/leaflet-image@latest/leaflet-image.js"></script>
+    <title>Visionneuse</title>
+</head>
+<body>
+    <div id="app">
+        <p>
+            Nombre de flux à afficher : 
+            <select name="selectionNbCartes" id="selectionNbCartes" v-model="nbCartes" @change="actualiserAffichage">
+                <option v-for="i in maxNbCartes" :key="i" :value="i">{{ i }}</option>
+            </select>
+        </p>
+
+        <p>Sélection des flux à afficher</p>
+        <div class="conteneur-selecteurs-flux" :class="'modele-'+nbCartes">
+            <div class="selecteur" v-for="i in nbCartes">
+                <select v-model="listeSelectionFlux[i-1]" @change="actualiserCarte(i-1)">
+                    <optgroup v-for="(flux, categorie) in listeFluxCategories" :label="categorie" :key="categorie">
+                        <option v-for="nomFlux in flux" :key="nomFlux" :value="nomFlux">{{ nomFlux }}</option>
+                    </optgroup>
+                </select>
+                
+            </div>
+        </div>
+
+        <p>Fonctionnalités</p>
+        <div class="conteneur-fonctionnalites">
+            <div>
+                <label for="recherche">Zoom sur : </label>
+                <input name="recherche" type="text" v-model="recherche" placeholder="Ville, adresse,..." @keyup.enter="zoomRecherche">
+                <button @click="zoomRecherche">OK</button>
+            </div>
+            <div class="p-invisible">|</div>
+            <button @click="telechargerImage">Capturer les cartes</button>
+            <div class="p-invisible">|</div>
+            <a href="glissiere.html"><button>Glissière verticale</button></a>
+            <div class="p-invisible">|</div>
+            <button onclick="basculerTheme()">Mode sombre/clair</button>
+        </div>
+
+        <div id="images"></div>
+
+        <div class="conteneur-cartes" :class="'modele-'+nbCartes">
+            <div v-for="i in nbCartes" :key="i" :id="'carte'+(i-1)" class="carte" :style="{ height: hauteurCarte + 'px' }"></div>
+        </div>
+
+    </div>
+    
+    <script src="js/basculerTheme.js"></script>
+    <script src="js/Leaflet.Sync/L.Map.Sync.js"></script>
+    <script src="js/leaflet.wmts/leaflet.wmts.browser.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

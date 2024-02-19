@@ -1,0 +1,40 @@
+{
+    "listeFlux": {
+        "OpenStreetMaps" : {
+            "url": "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+            "service": "XYZ",
+            "couche_wms": "",
+            "categorie": "Plans"
+        },
+        "Orthophotos IGN": {
+            "url": "https://data.geopf.fr/wms-r/wms",
+            "service": "WMS",
+            "couche_wms": "ORTHOIMAGERY.ORTHOPHOTOS",
+            "categorie": "Orthophotos"
+        },
+        "Google Satellite": {
+            "url": "https://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}",
+            "service": "XYZ",
+            "couche_wms": "",
+            "categorie": "Orthophotos"
+        },
+        "SPOT 6-7 2021": {
+            "url": "https://data.geopf.fr/wms-r/wms",
+            "service": "WMS",
+            "couche_wms": "ORTHOIMAGERY.ORTHO-SAT.SPOT.2021",
+            "categorie": "Orthophotos"
+        },
+        "Plan IGN": {
+            "url": "https://data.geopf.fr/wms-r/wms",
+            "service": "WMS",
+            "couche_wms": "GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2",
+            "categorie": "Plans"
+        },
+        "TopPlusOpen": {
+            "url": "https://sgx.geodatenzentrum.de/wms_topplus_open",
+            "service": "WMS",
+            "couche_wms": "web",
+            "categorie": "Plans"
+        }
+    }
+}
