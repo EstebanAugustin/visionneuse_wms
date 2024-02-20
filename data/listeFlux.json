@@ -25,9 +25,9 @@
             "categorie": "Orthophotos"
         },
         "Plan IGN": {
-            "url": "https://data.geopf.fr/wms-r/wms",
-            "service": "WMS",
-            "couche_wms": "GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2",
+            "url": "https://data.geopf.fr/tms/1.0.0/GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2/{z}/{x}/{y}.png",
+            "service": "TMS",
+            "couche_wms": "",
             "categorie": "Plans"
         },
         "TopPlusOpen": {
