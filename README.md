@@ -60,3 +60,5 @@ https://data.geopf.fr/wms-r/wms?service=WMS&request=GetMap&layers=ORTHOIMAGERY.O
 La couche à afficher est renseigné après le paramètre *layers* (*&layers=*). Ici, le flux WMS affiche la couche *ORTHOIMAGERY.ORTHOPHOTOS*.
 
 - **categorie** : est un attribut permettant de trier les flux dans l'interface de la visionneuse.
+
+**Attention : pour que l'outil puisse fonctionner, le flux OpenStreetMaps ne doit pas être supprimé, car c'est le flux affiché par défaut lors de l'initialisation du site.**
