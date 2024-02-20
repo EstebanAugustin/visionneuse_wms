@@ -26,7 +26,7 @@
         },
         "Plan IGN": {
             "url": "https://data.geopf.fr/tms/1.0.0/GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2/{z}/{x}/{y}.png",
-            "service": "TMS",
+            "service": "XYZ",
             "couche_wms": "",
             "categorie": "Plans"
         },
@@ -35,6 +35,12 @@
             "service": "WMS",
             "couche_wms": "web",
             "categorie": "Plans"
+        },
+        "Ortoimágenes MA de España (Sentinel2 y PNOA MA)": {
+            "url": 	"https://tms-pnoa-ma.idee.es/1.0.0/pnoa-ma/{z}/{x}/{y}.jpeg",
+            "service": "TMS",
+            "couche_wms": "",
+            "categorie": "Orthophotos"
         }
     }
 }

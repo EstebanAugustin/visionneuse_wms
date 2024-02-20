@@ -57,6 +57,6 @@ Si l'on reprend le lien suivant :
 
 https://data.geopf.fr/wms-r/wms?service=WMS&request=GetMap&layers=ORTHOIMAGERY.ORTHOPHOTOS&styles=&format=image%2Fjpeg&transparent=false&version=1.3.0&width=256&height=256&crs=EPSG%3A3857&bbox=152109.68628750078,6456024.283022561,152262.5603440711,6456177.15707913
 
-La couche à afficher est renseigné après le paramètre *layers* (**&layers=**). Ici, le flux WMS affiche la couche **ORTHOIMAGERY.ORTHOPHOTOS**.
+La couche à afficher est renseigné après le paramètre *layers* (*&layers=*). Ici, le flux WMS affiche la couche *ORTHOIMAGERY.ORTHOPHOTOS*.
 
-- categorie : est un attribut permettant de trier les flux dans l'interface de la visionneuse.
+- **categorie** : est un attribut permettant de trier les flux dans l'interface de la visionneuse.
