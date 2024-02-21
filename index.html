@@ -20,34 +20,33 @@
             </select>
         </p>
 
+        <hr>
+
         <p>Sélection des flux à afficher</p>
         <div class="conteneur-selecteurs-flux" :class="'modele-'+nbCartes">
-            <div class="selecteur" v-for="i in nbCartes">
-                <select v-model="listeSelectionFlux[i-1]" @change="actualiserCarte(i-1)">
+                <select class="selecteur-flux" v-for="i in nbCartes" v-model="listeSelectionFlux[i-1]" @change="actualiserCarte(i-1)">
                     <optgroup v-for="(flux, categorie) in listeFluxCategories" :label="categorie" :key="categorie">
                         <option v-for="nomFlux in flux" :key="nomFlux" :value="nomFlux">{{ nomFlux }}</option>
                     </optgroup>
                 </select>
-                
-            </div>
         </div>
+
+        <hr>
 
         <p>Fonctionnalités</p>
         <div class="conteneur-fonctionnalites">
-            <div>
+            <div class="conteneur-recherche">
                 <label for="recherche">Zoom sur : </label>
                 <input name="recherche" type="text" v-model="recherche" placeholder="Ville, adresse,..." @keyup.enter="zoomRecherche">
                 <button @click="zoomRecherche">OK</button>
             </div>
-            <div class="p-invisible">|</div>
+
             <button @click="telechargerImage">Capturer les cartes</button>
-            <div class="p-invisible">|</div>
+
             <a href="glissiere.html"><button>Glissière verticale</button></a>
-            <div class="p-invisible">|</div>
+
             <button onclick="basculerTheme()">Mode sombre/clair</button>
         </div>
-
-        <div id="images"></div>
 
         <div class="conteneur-cartes" :class="'modele-'+nbCartes">
             <div v-for="i in nbCartes" :key="i" :id="'carte'+(i-1)" class="carte" :style="{ height: hauteurCarte + 'px' }"></div>

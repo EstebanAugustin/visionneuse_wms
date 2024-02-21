@@ -104,8 +104,7 @@ const app = Vue.createApp({
             } else if (fluxChoisi.service === 'WMS') {
                 coucheFlux = L.tileLayer.wms(fluxChoisi.url, {layers: fluxChoisi.couche_wms, version: VERSION_WMS}).addTo(carte);
             } else if (fluxChoisi.service === 'TMS') {
-                let urlTMS = fluxChoisi.url.replace("{y}", "{-y}")
-                coucheFlux =  L.tileLayer(urlTMS, {maxZoom: 18}).addTo(carte);
+                coucheFlux =  L.tileLayer(fluxChoisi.url, {maxZoom: 18, tms: true}).addTo(carte);
             }
 
             carte.attributionControl.setPrefix(fluxChoisi.url);

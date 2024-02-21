@@ -20,7 +20,10 @@ const app = Vue.createApp({
             dernierFluxGauche: null,
             dernierFluxDroit: null,
 
-            recherche: ""
+            recherche: "",
+
+            attributionFluxDroit: "",
+            attributionFluxGauche: ""
         }
     },
     
@@ -59,13 +62,13 @@ const app = Vue.createApp({
             if (fluxChoisi.service === 'XYZ') {
                 coucheFlux = L.tileLayer(fluxChoisi.url, {maxZoom: 18}).addTo(carte);
             } else if (fluxChoisi.service === 'WMS') {
-                coucheFlux = L.tileLayer.wms(fluxChoisi.url, {layers: fluxChoisi.couche_wms, version: fluxChoisi.version_wms}).addTo(carte);
+                coucheFlux = L.tileLayer.wms(fluxChoisi.url, {layers: fluxChoisi.couche_wms, version: VERSION_WMS}).addTo(carte);
             } else if (fluxChoisi.service === 'TMS') {
                 let urlTMS = fluxChoisi.url.replace("{y}", "{-y}")
                 coucheFlux =  L.tileLayer(urlTMS, {maxZoom: 18}).addTo(carte);
             }
 
-            carte.attributionControl.setPrefix(fluxChoisi.url);
+            this.attributionFluxDroit = fluxChoisi.url;
 
             return coucheFlux;
         },
@@ -76,9 +79,11 @@ const app = Vue.createApp({
                 coucheFlux = L.tileLayer(fluxChoisi.url, {maxZoom: 18, pane: "swipePane"}).addTo(carte);
             } else if (fluxChoisi.service === 'WMS') {
                 coucheFlux = L.tileLayer.wms(fluxChoisi.url, {layers: fluxChoisi.couche_wms, version: VERSION_WMS, pane: "swipePane"}).addTo(carte);
+            } else if (fluxChoisi.service === 'TMS') {
+                coucheFlux =  L.tileLayer(fluxChoisi.url, {maxZoom: 18, tms: true}).addTo(carte);
             }
 
-            carte.attributionControl.setPrefix(fluxChoisi.url);
+            this.attributionFluxGauche = fluxChoisi.url;
 
             return coucheFlux;
         },
