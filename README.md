@@ -18,24 +18,24 @@ cela devra être changeable facilement (par exemple regroupés par catégories c
 
 
 ## Mise en place :
-Pour répondre aux besoin de ce projet, l'outil a été imaginé de la manière suivante :
+Pour répondre aux besoins de ce projet, l'outil a été imaginé de la manière suivante :
 - Développement de deux pages en HTML/CSS, présentant deux manières de visualiser les données (plusieurs flux visualisables côte à côte / deux flux séparés par une glissière verticale).
 
 - Utilisation du framework [Vue.js](https://fr.vuejs.org/), permettant un affichage et une mise à jour dynamique des flux séléctionnés en direct, mais également de changer la mise en page pour adapter l'outil en fonction du nombre de flux à afficher.
 
-- Utilisation de la bibliothèque JavaScript [Leaflet](https://leafletjs.com), compatible avec les flux WMS, TMS et XYZ. La principale demande du commanditaire étant de pouvoir afficher des flux WMS, il ne s'est pas imposé d'utiliser d'autres services plus avancés (mais plus complexes) tel que OpenLayers par exemple.
+- Utilisation de la bibliothèque JavaScript [Leaflet](https://leafletjs.com), compatible avec les flux WMS, TMS et XYZ. La principale demande du commanditaire étant de pouvoir afficher des flux WMS, il ne s'est pas imposé d'utiliser d'autres services plus avancés (mais plus complexes) tels que OpenLayers par exemple.
 
 
 ## Plugins Leaflet
-Certaines fonctionnalités du projet ont déjà été développés par la communauté Leaflet. Notamment, le premier plugin utilisé [Leaflet.Sync](https://github.com/jieter/Leaflet.Sync), permet de réaliser la première fonctionnalité attendue du projet : la synchronisation des cartes. En effet, ce plugin permet de transférer les évènements de zoom et de déplacement sur une carte, vers d'autres cartes sur une même page.
+Certaines fonctionnalités du projet ont déjà été développées par la communauté Leaflet. Notamment, le premier plugin utilisé [Leaflet.Sync](https://github.com/jieter/Leaflet.Sync), permet de réaliser la première fonctionnalité attendue du projet : la synchronisation des cartes. En effet, ce plugin permet de transférer les évènements de zoom et de déplacement sur une carte, vers d'autres cartes sur une même page.
 Le deuxième plugin utilisé, [leaflet-control-swipe](https://github.com/frogcat/leaflet-control-swipe), permet l'implantation d'une glissière verticale, évoluant de manière latérale sur une carte Leaflet, permettant la visualisation de deux couches superposées.
 
 
 ## Mise à jour des flux :
-Une des contraintes du projet étant de rendre la mise à jour facile pour le commanditaire, l'architecture du fichier listeFlux.json est détaillé ici.
+Une des contraintes du projet étant de rendre la mise à jour facile pour le commanditaire, l'architecture du fichier *listeFlux.json* est détaillée ici.
 
 Ce fichier recense les flux WMS/XYZ/TMS utilisé dans l'application Visionneuse.
-5 attributs sont associés à chaque flux :
+4 attributs sont associés à chaque flux :
 - **url** : lien du service WMS/XYZ/TMS du flux.
 Les liens XYZ et TMS sont des liens prêts à l'emploi, il se reconnaissent par leur fin, suivant souvent ce modèle : *{z}/{x}/{y}.png*
 
@@ -49,7 +49,7 @@ Ici, *https://data.geopf.fr/wms-r/wms*.
 - **service** : 3 valeurs sont possibles: WMS, XYZ ou TMS.
 Certains sites peuvent confondre XYZ et TMS lorsqu'ils renseignent la nature du flux. Si des tuiles sont affichées de manière bizarre, changer XYZ par TMS et vice-versa peut résoudre le problème.
 
-- **couche_wms** : est un attribut à renseigner, uniquement si le flux est un flux WMS. En effet, un service WMS peut diffuser une multitude de couches. Ainsi, la couche (ou layer) doit être renseignée, afin de préciser quel couche du flux WMS est à afficher.
+- **couche_wms** : est un attribut à renseigner, uniquement si le flux est un flux WMS. En effet, un service WMS peut diffuser une multitude de couches. Ainsi, la couche (ou layer) doit être renseignée, afin de préciser quelle couche du flux WMS est à afficher.
 
 Exemple : le service *https://data.geopf.fr/wms-r/wms* diffuse le plan IGN mais également des orthophotos (et des dizaines d'autres thématiques).
 
@@ -57,7 +57,7 @@ Si l'on reprend le lien suivant :
 
 https://data.geopf.fr/wms-r/wms?service=WMS&request=GetMap&layers=ORTHOIMAGERY.ORTHOPHOTOS&styles=&format=image%2Fjpeg&transparent=false&version=1.3.0&width=256&height=256&crs=EPSG%3A3857&bbox=152109.68628750078,6456024.283022561,152262.5603440711,6456177.15707913
 
-La couche à afficher est renseigné après le paramètre *layers* (*&layers=*). Ici, le flux WMS affiche la couche *ORTHOIMAGERY.ORTHOPHOTOS*.
+La couche à afficher est renseignée après le paramètre *layers* (*&layers=*). Ici, le flux WMS affiche la couche *ORTHOIMAGERY.ORTHOPHOTOS*.
 
 - **categorie** : est un attribut permettant de trier les flux dans l'interface de la visionneuse.
 
