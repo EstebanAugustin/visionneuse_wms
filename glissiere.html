@@ -23,8 +23,6 @@
             <button onclick="basculerTheme()">Mode sombre/clair</button>
         </div>
         
-        <hr>
-        
         <div class="conteneur-selecteurs-flux" :class="'modele-'+nbCartes">
                 <select class="selecteur-flux" v-model="listeSelectionFlux[0]" @change="actualiserFluxGauche">
                     <optgroup v-for="(flux, categorie) in listeFluxCategories" :label="categorie" :key="categorie">
