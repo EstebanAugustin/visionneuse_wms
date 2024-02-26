@@ -1,0 +1,12 @@
+label {
+    display: inline-block;
+    width: 150px; /* Ajustez la largeur selon vos besoins */
+    text-align: right;
+    margin-right: 10px; /* Espacement entre le label et l'input */
+}
+
+select, input[type="text"] {
+    width: 300px; /* Ajustez la largeur selon vos besoins */
+    margin-bottom: 10px; /* Espacement entre les input */
+    box-sizing: border-box; /* Inclure les bordures et les rembourrages dans la largeur totale */
+}
