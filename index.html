@@ -13,28 +13,14 @@
 </head>
 <body>
     <div id="app">
-        <p>
-            Nombre de flux à afficher : 
-            <select name="selectionNbCartes" id="selectionNbCartes" v-model="nbCartes" @change="actualiserAffichage">
-                <option v-for="i in maxNbCartes" :key="i" :value="i">{{ i }}</option>
-            </select>
-        </p>
-
-        <hr>
-
-        <p>Sélection des flux à afficher</p>
-        <div class="conteneur-selecteurs-flux" :class="'modele-'+nbCartes">
-                <select class="selecteur-flux" v-for="i in nbCartes" v-model="listeSelectionFlux[i-1]" @change="actualiserCarte(i-1)">
-                    <optgroup v-for="(flux, categorie) in listeFluxCategories" :label="categorie" :key="categorie">
-                        <option v-for="nomFlux in flux" :key="nomFlux" :value="nomFlux">{{ nomFlux }}</option>
-                    </optgroup>
-                </select>
-        </div>
-
-        <hr>
-
-        <p>Fonctionnalités</p>
         <div class="conteneur-fonctionnalites">
+            <p>
+                Nombre de flux à afficher : 
+                <select name="selectionNbCartes" id="selectionNbCartes" v-model="nbCartes" @change="actualiserAffichage">
+                    <option v-for="i in maxNbCartes" :key="i" :value="i">{{ i }}</option>
+                </select>
+            </p>
+
             <div class="conteneur-recherche">
                 <label for="recherche">Zoom sur : </label>
                 <input name="recherche" type="text" v-model="recherche" placeholder="Ville, adresse,..." @keyup.enter="zoomRecherche">
@@ -46,6 +32,16 @@
             <a href="glissiere.html"><button>Glissière verticale</button></a>
 
             <button onclick="basculerTheme()">Mode sombre/clair</button>
+        </div>
+
+        <hr>
+
+        <div class="conteneur-selecteurs-flux" :class="'modele-'+nbCartes">
+                <select class="selecteur-flux" v-for="i in nbCartes" v-model="listeSelectionFlux[i-1]" @change="actualiserCarte(i-1)">
+                    <optgroup v-for="(flux, categorie) in listeFluxCategories" :label="categorie" :key="categorie">
+                        <option v-for="nomFlux in flux" :key="nomFlux" :value="nomFlux">{{ nomFlux }}</option>
+                    </optgroup>
+                </select>
         </div>
 
         <div class="conteneur-cartes" :class="'modele-'+nbCartes">

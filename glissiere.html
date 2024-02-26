@@ -13,7 +13,18 @@
 </head>
 <body>
     <div id="app">
-        <p>Sélection des flux à afficher</p>
+        <div class="conteneur-fonctionnalites">
+            <div>
+                <label for="recherche">Zoom sur : </label>
+                <input name="recherche" type="text" v-model="recherche" placeholder="Ville, adresse,..." @keyup.enter="zoomRecherche">
+                <button @click="zoomRecherche">OK</button>
+            </div>
+            <a href="index.html"><button>Côte à côte</button></a>
+            <button onclick="basculerTheme()">Mode sombre/clair</button>
+        </div>
+        
+        <hr>
+        
         <div class="conteneur-selecteurs-flux" :class="'modele-'+nbCartes">
                 <select class="selecteur-flux" v-model="listeSelectionFlux[0]" @change="actualiserFluxGauche">
                     <optgroup v-for="(flux, categorie) in listeFluxCategories" :label="categorie" :key="categorie">
@@ -25,24 +36,6 @@
                         <option v-for="nomFlux in flux" :key="nomFlux" :value="nomFlux">{{ nomFlux }}</option>
                     </optgroup>
                 </select>
-        </div>
-
-        <hr>
-
-        <p>Fonctionnalités</p>
-        <div class="conteneur-fonctionnalites">
-            <div>
-                <label for="recherche">Zoom sur : </label>
-                <input name="recherche" type="text" v-model="recherche" placeholder="Ville, adresse,..." @keyup.enter="zoomRecherche">
-                <button @click="zoomRecherche">OK</button>
-            </div>
-            <a href="index.html"><button>Côte à côte</button></a>
-            <button onclick="basculerTheme()">Mode sombre/clair</button>
-        </div>
-
-        <div class="conteneur-attributions">
-            <p>{{ attributionFluxGauche }}</p>
-            <p>{{ attributionFluxDroit }}</p>
         </div>
 
         <div class="conteneur-cartes">
