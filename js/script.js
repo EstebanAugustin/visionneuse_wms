@@ -58,13 +58,14 @@ const app = Vue.createApp({
 
         
         actualiserCarte(i) {
-            let fluxChoisi = this.listeFlux[this.listeSelectionFlux[i]];
+            let nomFluxChoisi = this.listeSelectionFlux[i]
+            let fluxChoisi = this.listeFlux[nomFluxChoisi];
             let carte = this.cartes[i];
             if (this.couchesCumulees[i].length > 1 ) {
                 let derniereCouche = this.couchesCumulees[i].pop();
                 carte.removeLayer(derniereCouche);
             }
-            let coucheFlux = this.ajouterCoucheFlux(carte, fluxChoisi);
+            let coucheFlux = this.ajouterCoucheFlux(carte, fluxChoisi, nomFluxChoisi);
             this.couchesCumulees[i].push(coucheFlux);
         },
 
@@ -97,7 +98,7 @@ const app = Vue.createApp({
             this.actualiserDimensionsCartes()
         },
 
-        ajouterCoucheFlux(carte, fluxChoisi) {
+        ajouterCoucheFlux(carte, fluxChoisi, nomFluxChoisi) {
             let coucheFlux;
             if (fluxChoisi.service === 'XYZ') {
                 coucheFlux = L.tileLayer(fluxChoisi.url, {maxZoom: 18}).addTo(carte);
@@ -107,16 +108,18 @@ const app = Vue.createApp({
                 coucheFlux =  L.tileLayer(fluxChoisi.url, {maxZoom: 18, tms: true}).addTo(carte);
             }
 
-            carte.attributionControl.setPrefix(fluxChoisi.url);
+            // Ajoutez ensuite l'attribution spécifique de cette couche
+            carte.attributionControl.setPrefix(nomFluxChoisi);
 
             return coucheFlux;
         },
 
         initialiserCartes() {
             for (let i = 0; i < this.nbCartes; i++) {
-                let fluxChoisi = this.listeFlux[this.listeSelectionFlux[i]];
+                let nomFluxChoisi = this.listeSelectionFlux[i]
+                let fluxChoisi = this.listeFlux[nomFluxChoisi];
                 let carte = L.map('carte' + i).setView(this.coordonnees, this.zoom);
-                let coucheFlux = this.ajouterCoucheFlux(carte, fluxChoisi);
+                let coucheFlux = this.ajouterCoucheFlux(carte, fluxChoisi, nomFluxChoisi);
                 this.cartes.push(carte);
                 this.couchesCumulees[i].push(coucheFlux);
             }
@@ -166,10 +169,10 @@ const app = Vue.createApp({
 
         telechargerImage() {
             for (let i = 0; i < this.cartes.length; i++) {
-                leafletImage(this.cartes[i], function(err, canvas) {
+                leafletImage(this.cartes[i], (err, canvas) => {
                     let a = document.createElement("a");
                     a.href = canvas.toDataURL();
-                    a.download = "carte" + i + ".png"; 
+                    a.download = "carte" + i + "-" + this.listeSelectionFlux[i] + ".png"; 
                     a.click();
                 });
             }
