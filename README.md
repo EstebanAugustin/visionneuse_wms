@@ -62,3 +62,14 @@ La couche à afficher est renseigné après le paramètre *layers* (*&layers=*).
 - **categorie** : est un attribut permettant de trier les flux dans l'interface de la visionneuse.
 
 **Attention : pour que l'outil puisse fonctionner, le flux OpenStreetMaps ne doit pas être supprimé, car c'est le flux affiché par défaut lors de l'initialisation du site.**
+
+
+## Installation sur un serveur local
+Pour déployer ce site sur un serveur local:
+- Installer la dernière version de [MAMP](https://www.mamp.info/en/downloads/).
+- Télécharger la [dernière version du projet](https://github.com/EstebanAugustin/visionneuse_wms/archive/refs/heads/main.zip).
+- Dans MAMP:
+Aller dans les préférences ![alt text](img/pref.png)
+Modifier "Document Root" pour le dossier du projet ![alt text](img/dossier_proj.png)
+- Lancer le serveur
+- Se rendre à l'adresse http://localhost
