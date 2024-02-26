@@ -12,6 +12,18 @@
             "couche_wms": "ORTHOIMAGERY.ORTHOPHOTOS",
             "categorie": "Orthophotos"
         },
+        "Photographies aériennes historiques 1950-1965": {
+            "url": "https://data.geopf.fr/wms-r/wms",
+            "service": "WMS",
+            "couche_wms": "ORTHOIMAGERY.ORTHOPHOTOS.1950-1965",
+            "categorie": "Orthophotos"
+        },
+        "Scan 50 historique": {
+            "url": "https://data.geopf.fr/wms-r/wms",
+            "service": "WMS",
+            "couche_wms": "GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN50.1950",
+            "categorie": "Plans"
+        },
         "Google Satellite": {
             "url": "https://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}",
             "service": "XYZ",
@@ -44,3 +56,4 @@
         }
     }
 }
+
