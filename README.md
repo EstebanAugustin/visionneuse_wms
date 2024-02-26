@@ -69,9 +69,9 @@ Pour déployer ce site sur un serveur local:
 - Installer la dernière version de [MAMP](https://www.mamp.info/en/downloads/).
 - Télécharger la [dernière version du projet](https://github.com/EstebanAugustin/visionneuse_wms/archive/refs/heads/main.zip).
 - Dans MAMP:
-Aller dans les préférences
-![alt text](img/pref.png)
-Modifier "Document Root" pour le dossier du projet
-![alt text](img/dossier_proj.png)
+- Aller dans les préférences
+- ![alt text](img/pref.png)
+- Modifier "Document Root" pour le dossier du projet
+- ![alt text](img/dossier_proj.png)
 - Lancer le serveur
 - Se rendre à l'adresse http://localhost
